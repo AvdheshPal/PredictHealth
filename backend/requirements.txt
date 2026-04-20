@@ -1,0 +1,12 @@
+# Python dependencies for the FastAPI backend
+# fastapi              — web framework
+# uvicorn[standard]    — ASGI server
+# sqlalchemy           — ORM + database abstraction
+# python-jose[cryptography] — JWT encode/decode
+# passlib[bcrypt]      — password hashing
+# python-dotenv        — loads .env into os.getenv
+# scikit-learn         — ML models (RandomForestClassifier)
+# pandas               — data loading in train.py
+# numpy                — array operations for inference
+# joblib               — model serialisation (.pkl)
+# pydantic[email]      — EmailStr validation in schemas
