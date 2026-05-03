@@ -1,6 +1,6 @@
 # PredictHealth — Work Status Tracker
 
-> Last updated: 2026-04-20
+> Last updated: 2026-04-22
 
 ---
 
@@ -215,3 +215,8 @@ npm run dev                     # http://localhost:5173
 | 2026-04-20 | AuthContext: forgotPassword, resetPassword, resendVerification, verifyEmail methods added |
 | 2026-04-20 | axios.js: base URL switched to `VITE_BASE_URL` env var |
 | 2026-04-20 | project.md + complete.md updated to reflect Firebase-based architecture |
+| 2026-04-22 | Dashboard: fetch full history so "Total predictions" stat shows real count; table still shows last 3 |
+| 2026-04-22 | Results: removed broken POST /api/history call — backend auto-saves on predict; "Save result" shows Saved state |
+| 2026-04-22 | Profile: added `required` to all edit-profile fields (first_name, last_name, email) and all password fields |
+| 2026-04-22 | About: updated tech stack Auth entry from "JWT + bcrypt" to "Firebase Authentication" |
+| 2026-04-22 | Features: updated "Secure & Private" card to describe Firebase auth (removed stale JWT/bcrypt/sessionStorage mentions) |

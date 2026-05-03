@@ -12,7 +12,7 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    api.get('/api/history?limit=3')
+    api.get('/api/history')
       .then(({ data }) => setPredictions(data))
       .catch(() => {})
       .finally(() => setLoading(false));
@@ -79,7 +79,7 @@ export default function Dashboard() {
                 </tr>
               </thead>
               <tbody>
-                {predictions.map((p) => (
+                {predictions.slice(0, 3).map((p) => (
                   <tr
                     key={p.id}
                     onClick={() => navigate(`/results?id=${p.id}`)}

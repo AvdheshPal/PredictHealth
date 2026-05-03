@@ -11,6 +11,7 @@ venv/
 ENV/
 .claude/
 .claude
+*.md
 
 # Environment variables
 .env
