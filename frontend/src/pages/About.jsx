@@ -39,7 +39,7 @@ export default function About() {
               ['HTTP client', 'Axios'],
               ['Backend', 'FastAPI (Python)'],
               ['Database', 'SQLite + SQLAlchemy'],
-              ['Auth', 'JWT + bcrypt'],
+              ['Auth', 'Firebase Authentication'],
               ['ML', 'Scikit-learn'],
               ['Model type', 'Random Forest'],
             ].map(([label, value]) => (

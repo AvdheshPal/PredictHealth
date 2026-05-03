@@ -119,6 +119,7 @@ export default function Profile() {
                 <label className="block text-sm font-medium text-gray-700 mb-1">First name</label>
                 <input
                   type="text"
+                  required
                   value={form.first_name}
                   onChange={(e) => setForm((f) => ({ ...f, first_name: e.target.value }))}
                   className="w-full px-3 py-2 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary"
@@ -128,6 +129,7 @@ export default function Profile() {
                 <label className="block text-sm font-medium text-gray-700 mb-1">Last name</label>
                 <input
                   type="text"
+                  required
                   value={form.last_name}
                   onChange={(e) => setForm((f) => ({ ...f, last_name: e.target.value }))}
                   className="w-full px-3 py-2 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary"
@@ -138,6 +140,7 @@ export default function Profile() {
               <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
               <input
                 type="email"
+                required
                 value={form.email}
                 onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
                 className="w-full px-3 py-2 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary"
@@ -166,6 +169,7 @@ export default function Profile() {
                 <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
                 <input
                   type="password"
+                  required
                   value={pwForm[key]}
                   onChange={(e) => setPwForm((f) => ({ ...f, [key]: e.target.value }))}
                   className="w-full px-3 py-2 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary"

@@ -14,8 +14,7 @@ export default function Results() {
 
   const [result, setResult] = useState(state?.result ?? null);
   const [loading, setLoading] = useState(!result && !!id);
-  const [saving, setSaving] = useState(false);
-  const [saved, setSaved] = useState(false);
+  const [saved] = useState(true); // backend saves automatically on POST /api/predict
 
   useEffect(() => {
     if (!result && id) {
@@ -48,17 +47,6 @@ export default function Results() {
 
   const maxImportance = Math.max(...Object.values(feature_importances), 0.0001);
 
-  async function handleSave() {
-    setSaving(true);
-    try {
-      await api.post('/api/history', result);
-      setSaved(true);
-    } catch {
-    } finally {
-      setSaving(false);
-    }
-  }
-
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
@@ -66,11 +54,10 @@ export default function Results() {
         {/* Header actions */}
         <div className="flex justify-end gap-3 mb-6">
           <button
-            onClick={handleSave}
-            disabled={saving || saved}
-            className="px-4 py-2 border border-gray-300 rounded-md text-sm hover:bg-gray-50 disabled:opacity-60"
+            disabled={saved}
+            className="px-4 py-2 border border-gray-300 rounded-md text-sm disabled:opacity-60"
           >
-            {saved ? 'Saved' : saving ? 'Saving…' : 'Save result'}
+            Saved
           </button>
           <button
             onClick={() => window.print()}

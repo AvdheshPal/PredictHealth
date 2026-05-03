@@ -23,8 +23,8 @@ const features = [
   },
   {
     title: 'Secure & Private',
-    desc: 'Your health data is protected with industry-standard JWT authentication and bcrypt password hashing.',
-    detail: 'Sessions are scoped to the browser tab via sessionStorage — closing the tab automatically signs you out. No health data is shared with third parties.',
+    desc: 'Your health data is protected with Firebase Authentication — every API request carries a short-lived ID token verified by the backend.',
+    detail: 'Sessions are managed by the Firebase SDK in browser IndexedDB. Tokens are refreshed automatically and never stored in localStorage or sessionStorage. No health data is shared with third parties.',
   },
   {
     title: 'PDF Export',
