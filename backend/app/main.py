@@ -18,13 +18,16 @@ log = logging.getLogger("predicthealth")
 
 # ── App ───────────────────────────────────────────────────────────────────────
 Base.metadata.create_all(bind=engine)
-frontend_url = os.getenv("FRONTEND_URL", "http://localhost:5173")
+
+# Comma-separated origins e.g. "http://localhost:5173,https://predicthealth.vercel.app"
+_origins_env = os.getenv("FRONTEND_URL", "http://localhost:5173")
+allowed_origins = [url.strip() for url in _origins_env.split(",") if url.strip()]
 
 app = FastAPI(title="PredictHealth API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[frontend_url],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -82,7 +85,7 @@ async def startup_checks():
             all_ok = False
 
     # 4. Environment variables
-    required_env = ["DATABASE_URL", "FIREBASE_PROJECT_ID"]
+    required_env = ["DATABASE_URL" , "FRONTEND_URL"]
     for var in required_env:
         if os.getenv(var):
             log.info(f"✅  ENV {var:<22}: set")
