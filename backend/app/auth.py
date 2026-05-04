@@ -1,16 +1,22 @@
 import os
+import json
 import logging
 import firebase_admin
 from firebase_admin import credentials, auth as firebase_auth
 from fastapi import Depends, HTTPException
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 
-# Resolve path to serviceAccountKey.json sitting next to this package
-_KEY_PATH = os.path.abspath(
-    os.path.join(os.path.dirname(__file__), "..", "serviceAccountKey.json")
-)
+# On Render: set FIREBASE_SERVICE_ACCOUNT_JSON env var (paste full JSON string).
+# Locally: place serviceAccountKey.json in backend/.
+_sa_json = os.getenv("FIREBASE_SERVICE_ACCOUNT_JSON")
+if _sa_json:
+    cred = credentials.Certificate(json.loads(_sa_json))
+else:
+    _key_path = os.path.abspath(
+        os.path.join(os.path.dirname(__file__), "..", "serviceAccountKey.json")
+    )
+    cred = credentials.Certificate(_key_path)
 
-cred = credentials.Certificate(_KEY_PATH)
 firebase_admin.initialize_app(cred)
 
 _bearer = HTTPBearer()

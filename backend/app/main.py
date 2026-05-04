@@ -98,7 +98,13 @@ async def startup_checks():
     log.info("=" * 55)
 
 
-# ── Health endpoint ───────────────────────────────────────────────────────────
+# ── Root + Health endpoints ───────────────────────────────────────────────────
+@app.get("/", tags=["Health"])
+def root():
+    return {"status": "ok", "message": "PredictHealth API is running"}
+
+
+
 @app.get("/health", tags=["Health"])
 def health():
     """Runtime health check — call anytime to verify all components."""
