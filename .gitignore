@@ -12,6 +12,7 @@ ENV/
 .claude/
 .claude
 
+
 # Environment variables
 .env
 .env.local
